@@ -4,7 +4,8 @@
 
 # ###### MODIFY THESE #######
 # mission name (for report contents)
-mission <- 'sg639_CalCurCEAS_Sep2024'
+# mission <- 'sg639_CalCurCEAS_Sep2024'
+mission <- 'sg680_CalCurCEAS_Sep2024'
 # path to pamguard folder (for building filenames)
 path_pg <- 'Q:/CalCurCEAS_fall_2024/analysis/pamguard'
 # ###########################
