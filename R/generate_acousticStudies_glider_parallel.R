@@ -50,7 +50,8 @@ plan()
 availableCores(logical = FALSE)
 
 # set a multisession (parallel processing) plan with cores =< than avail
-# plan(multisession(workers=4))
+# TURN ON PARALLEL PROCESSING
+#plan(multisession(workers=4))
 plan()
 
 # now, proceed as normal
@@ -58,18 +59,25 @@ plan()
 
 # ------ USER DEFINED INPUTS ----------------------------------------------
 # define glider mission and PG version
-mission <- 'sg639_CalCurCEAS_Sep2024'
+# mission <- 'sg639_CalCurCEAS_Sep2024'
+mission <- 'sg680_CalCurCEAS_Sep2024'
 pgVer <- '20217a'
 
 # define transfer function
 calFile <- 0 # 'C:/path/cal.csv'; to skip calibration set to 0
 
 # define paths
-path_analysis <- 'Q:/CalCurCEAS_fall_2024/analysis'
 # This "analysis" folder must contain a subdirectory "pamguard" which then 
 # contains the subdirectories "databases" and "binaries"
 # OPTIONALLY, if you'd rather set each of those manually, they can be manually
 # entered in the next section
+# Generated AcousticStudies will be saved in an "acoustic_studies" folder in 
+# the "pamguard" folder
+path_analysis <- 'Q:/CalCurCEAS_fall_2024/analysis'
+
+# Path to the event (triton) logs to be used for grouping 
+path_log <- 'C:/Users/pam_user/Documents/GitHub/glider-CalCurCEAS/cetaceans/triton_log_derived'
+
 # path_pg <- 'T:/glider_MHI_analysis/pamguard'
 # path_out <- 'T:/glider_MHI_analysis/classification'
 
@@ -95,10 +103,10 @@ path_binaries <- file.path(path_pg, 'binaries', paste0(pgVerPrfx, '_glider_bante
 dbFile <- file.path(path_pg, 'databases', paste0(pgVerPrfx, '_glider_banter_', 
                                                  mission, '.sqlite3'))
 # merged triton log file
-# logFile <- file.path(path_analysis, 'triton_logs',
-#                      paste0(mission, '_Pm_mw_collapsed_forPAMpal.csv'))
-logFile <- file.path(path_analysis, 'triton_logs',
-                     paste0(mission, '_Pm_mw_sfReview_collapsed_forPAMpal.csv'))
+# logFile <- file.path(path_log, 
+#                      paste0(mission, '_Pm_mw_sfReview_collapsed_forPAMpal.csv'))
+logFile <- file.path(path_log,
+                     paste0(mission, '_Pm_mw_collapsed_forPAMpal.csv'))
 
 # files to be created
 paramFile <- file.path(path_analysis, 'pamguard', 'acoustic_studies', 
