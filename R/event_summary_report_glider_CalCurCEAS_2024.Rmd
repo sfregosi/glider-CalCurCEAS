@@ -223,6 +223,9 @@ if ((!exists("useParamsFlag", where = params)) |
       )}}}
 
 # set up cache output subdirectory in path_out
+if (!dir.exists(file.path(path_out, 'event_cache'))){
+  dir.create(file.path(path_out, 'event_cache'))
+}
 path_cache <- file.path(path_out, 'event_cache', 
                        paste0(params$survey, '_', Sys.Date()))
 if (!dir.exists(path_cache)) {
